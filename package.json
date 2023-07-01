@@ -1,0 +1,61 @@
+{
+    "name": "parse-server-typescript",
+    "version": "1.0.0",
+    "description": "Parse Server using Typescript",
+    "main": "./dist/src/index.js",
+    "private": true,
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dodi-smart/parse-server-typescript.git"
+    },
+    "scripts": {
+        "dev": "yarn build && nodemon",
+        "dev:debug": "nodemon --inspect",
+        "lint": "eslint ./ --ext .ts,.js",
+        "build": "tsc",
+        "start": "node dist/src/index.js",
+        "unit": "jest --config tests/unit/jest.config.js",
+        "integration": "PARSE_SILENT=true ./tests/run_integration_tests.sh",
+        "test": "yarn lint && yarn build && yarn unit && yarn integration",
+        "coverage": "nyc --silent yarn integration && nyc report"
+    },
+    "dependencies": {
+        "dotenv": "16.0.1",
+        "express": "4.18.2",
+        "graphql": "16.5.0",
+        "module-alias": "2.2.2",
+        "parse-dashboard": "5.1.0",
+        "parse-server": "6.2.1"
+    },
+    "devDependencies": {
+        "@types/express": "4.17.13",
+        "@types/jest": "28.1.4",
+        "@types/node": "16.11.43",
+        "@types/parse": "2.18.16",
+        "@typescript-eslint/eslint-plugin": "5.30.4",
+        "@typescript-eslint/parser": "5.30.4",
+        "babel-eslint": "10.1.0",
+        "babel-watch": "7.7.0",
+        "eslint": "8.19.0",
+        "eslint-plugin-import": "2.26.0",
+        "jest": "28.1.2",
+        "nodemon": "2.0.18",
+        "nyc": "15.1.0",
+        "ts-jest": "28.0.5",
+        "ts-loader": "9.3.1",
+        "ts-node": "10.8.2",
+        "typescript": "4.7.4"
+    },
+    "resolutions": {
+        "graphql": "16.5.0"
+    },
+    "engines": {
+        "node": ">=16 <17 || >=18 <19",
+        "npm": "please-use-yarn",
+        "yarn": "1.22"
+    },
+    "_moduleAliases": {
+      "@": "dist/src"
+    }
+}
